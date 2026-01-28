@@ -1,0 +1,149 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html, body, #root {
+    @apply overflow-x-hidden w-full max-w-full;
+  }
+
+  body {
+    @apply bg-dark-950 text-dark-100 antialiased;
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-dark-900;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-dark-700 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-dark-600;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply px-4 py-2 rounded-lg font-medium transition-all duration-200 
+           disabled:opacity-50 disabled:cursor-not-allowed
+           focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-dark-950;
+  }
+
+  .btn-primary {
+    @apply btn bg-primary-600 text-white hover:bg-primary-700 
+           focus:ring-primary-500 active:bg-primary-800;
+  }
+
+  .btn-secondary {
+    @apply btn bg-dark-800 text-dark-100 hover:bg-dark-700 
+           focus:ring-dark-500 border border-dark-700;
+  }
+
+  .btn-ghost {
+    @apply btn bg-transparent text-dark-300 hover:bg-dark-800 hover:text-dark-100;
+  }
+
+  .btn-danger {
+    @apply btn bg-red-600 text-white hover:bg-red-700 
+           focus:ring-red-500 active:bg-red-800;
+  }
+
+  .input {
+    @apply w-full px-4 py-3 bg-dark-900 border border-dark-700 rounded-lg
+           text-dark-100 placeholder-dark-500
+           focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent
+           transition-all duration-200;
+  }
+
+  .input-error {
+    @apply input border-red-500 focus:ring-red-500;
+  }
+
+  .card {
+    @apply bg-dark-900 border border-dark-800 rounded-xl overflow-hidden;
+  }
+
+  .card-hover {
+    @apply card hover:border-dark-700 transition-colors duration-200;
+  }
+
+  .link {
+    @apply text-primary-400 hover:text-primary-300 transition-colors duration-200;
+  }
+
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+
+  .badge-primary {
+    @apply badge bg-primary-900/50 text-primary-300 border border-primary-700/50;
+  }
+
+  .badge-secondary {
+    @apply badge bg-dark-800 text-dark-300 border border-dark-700;
+  }
+
+  .avatar {
+    @apply rounded-full object-cover bg-dark-800;
+  }
+
+  .skeleton {
+    @apply animate-pulse bg-dark-800 rounded;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary-400 to-purple-400 bg-clip-text text-transparent;
+  }
+
+  .glass {
+    @apply bg-dark-900/80 backdrop-blur-lg;
+  }
+
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Code highlighting */
+pre {
+  @apply bg-dark-950 border border-dark-800 rounded-lg p-4 overflow-x-auto;
+}
+
+code {
+  @apply font-mono text-sm;
+}
+
+/* Animations */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-shimmer {
+  animation: shimmer 2s infinite linear;
+  background: linear-gradient(
+    90deg,
+    theme('colors.dark.800') 0%,
+    theme('colors.dark.700') 50%,
+    theme('colors.dark.800') 100%
+  );
+  background-size: 200% 100%;
+}
